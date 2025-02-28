@@ -1,0 +1,57 @@
+karin.last,yuval_cohen
+211396783,208305052
+
+The trees package contains the following classes:
+    Flora: Manages the creation, placement, and removal of trees.
+    It ensures alignment to a grid and maintains active trees within a specified range.
+
+    Tree: Handles the creation of a single tree, including its trunk, leaves, and fruits.
+    It supports building and removing tree components dynamically.
+
+    Trunk: Represents the trunk of a tree, rendered as a rectangular object with a brownish shade.
+    The shade varies based on a given factor.
+
+    Leaf: Represents a leaf in the game world.
+    Leaves can move dynamically, changing their size and angle over time for a realistic effect.
+    Fruit: Represents a fruit in the game world.
+    Fruits are collectible items that can reward the player with energy when collected.
+
+The classes in the trees package interact as follows:
+    Flora and Tree:
+    Flora is responsible for managing multiple Tree instances.
+    It ensures that trees are created and removed dynamically based on the range it receives.
+    Trees are spaced apart at intervals of 210px, ensuring consistent placement and alignment with the
+    game world grid.
+    Flora delegates the construction of each tree, including its trunk, leaves, and fruits, to the Tree class.
+
+    Tree and Trunk:
+    Each Tree instance contains a Trunk object, representing its main structure.
+    The Trunk is created with customizable dimensions and shading.
+
+    Tree and Leaf:
+    Tree creates multiple Leaf objects to represent its foliage.
+    Leaves are arranged in various shapes (e.g., square, triangle, diamond) and animated to enhance realism.
+
+    Tree and Fruit:
+    Tree can add fruits to its leaves. Fruits are managed through a callback mechanism to reward the player
+    when collected.
+    Fruits are dynamically added and removed as part of the Tree lifecycle.
+
+    Inter-Class Integration:
+    Tree, Trunk, Leaf, and Fruit are composed and managed by Flora to create a cohesive tree system in the
+    game world.
+
+The trees package incorporates the following design patterns:
+    The primary design approach follows the specifications provided in the instruction file at 7.2.
+    The Flora class acts as a central coordinator for managing both the terrain and the trees.
+    By using the terrain's groundHeightAt(x) method, Flora determines where to create trees.
+    This approach keeps the terrain and trees decoupled, with Flora handling all tree placement logic
+    independently.
+    The Tree class follows a composite design structure, combining its components (trunk, leaves, and fruits)
+    into a single unified entity. This allows Flora to manage trees as cohesive objects,
+    enabling both hierarchical organization and operations on individual parts when needed.
+    The Fruit class uses a single observer mechanism with a runnable callback to notify when a fruit is
+    collected.
+    This allows the avatar or other systems to respond dynamically while maintaining loose coupling and
+    flexibility.
+
